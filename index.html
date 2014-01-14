@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Photo Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            position: relative;
+        }   
+        #detail-view{
+            left: 0;    
+            top:0;
+            position: absolute;
+            display: none;
+        }
+        #detail-img {
+                max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Photo Gallery</h1>
+
+    <div id="photo_gallery" class="container">
+
+        <div class="row">
+            <div class="col-md-3 col-xs-6">
+                <img class="img-thumbnail" src="photos/Abstract.jpg" />
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <img class="img-thumbnail" src="photos/Moon.jpg" />
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <img class="img-thumbnail" src="photos/Snow.jpg" />
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <img class="img-thumbnail" src="photos/Sky.jpg" />
+            </div>
+        </div>
+
+        <div id="detail-view">
+            <div class="row">
+                <div class="col-md-12">
+                    <img id="detail-img" src="photos/Sky.jpg" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(".img-thumbnail").on("click", function(){
+            console.log(this);
+            $("#detail-view").css("display", "block");
+            $("#detail-view").fadeIn();
+            $("#detail-img").attr("src", this.src );
+        });
+        
+        $("#detail-view").on("click", function(){
+            //$(this).css("display", "none");
+            $(this).fadeOut();
+        })
+    </script>
+</body>
+
+</html>
