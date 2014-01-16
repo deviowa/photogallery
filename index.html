@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .container {
-            position: relative;
-        }   
         #detail-view{
             left: 0;    
             top:0;
@@ -17,6 +14,21 @@
         }
         #detail-img {
                 max-width: 100%;
+        }
+        
+        .container {
+            position: relative;
+        }
+        
+        .describe {
+            background-color: rgba(255, 255,255, .8);
+            border: 1px solid #000;
+            padding: 15px;
+            position: absolute;
+            top: -20px;
+            left: 50px;
+            display: none;
+            
         }
     </style>
 </head>
@@ -29,15 +41,19 @@
         <div class="row">
             <div class="col-md-3 col-xs-6">
                 <img class="img-thumbnail" src="photos/Abstract.jpg" />
+                <div class="describe">This is info about Anstract.jpg.</div>
             </div>
             <div class="col-md-3 col-xs-6">
                 <img class="img-thumbnail" src="photos/Moon.jpg" />
+                <div class="describe">This is info about Moon.jpg.</div>
             </div>
             <div class="col-md-3 col-xs-6">
                 <img class="img-thumbnail" src="photos/Snow.jpg" />
+                <div class="describe">This is info about Snow.jpg.</div>
             </div>
             <div class="col-md-3 col-xs-6">
                 <img class="img-thumbnail" src="photos/Sky.jpg" />
+                <div class="describe">This is info about Sky.jpg.</div>
             </div>
         </div>
 
@@ -58,10 +74,19 @@
     <script>
         $(".img-thumbnail").on("click", function(){
             console.log(this);
-            $("#detail-view").css("display", "block");
+            //$("#detail-view").css("display", "block");
             $("#detail-view").fadeIn();
             $("#detail-img").attr("src", this.src );
         });
+        
+        $(".img-thumbnail").parent().on("mouseenter", function(){
+            $(this).find(".describe").fadeIn();
+        });
+        
+        $(".img-thumbnail").parent().on("mouseleave", function(){
+            $(this).find(".describe").fadeOut();
+        }); 
+        
         
         $("#detail-view").on("click", function(){
             //$(this).css("display", "none");
